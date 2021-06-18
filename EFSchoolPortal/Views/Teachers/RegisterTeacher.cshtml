@@ -1,0 +1,118 @@
+﻿@using EFSchoolPortal.Models
+@model EFSchoolPortal.Models.Teacher
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+
+<h1 class="text-center">Here you can register to become a teacher!</h1>
+<br />
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="form-gorup form-horizontal">
+                @using (Html.BeginForm("RegisterTeacher", "Teachers", 1))
+                {
+                <div>
+                    <div class="form-gorup">
+                        @Html.Label("Fname", "First Name")
+                        @Html.TextBoxFor(x => x.Fname)
+                    </div>
+                    <div class="form-gorup">
+                        @Html.Label("Lname", "Last Name")
+                        @Html.TextBoxFor(x => x.Lname)
+                    </div>
+                    <div class="form-gorup">
+                        @Html.Label("Email")
+                        @Html.TextBoxFor(x => x.Email)
+                    </div>
+                    <div class="form-gorup">
+                        @Html.Label("CourseId")
+                        <select name="courseId" id="CourseId">
+                            @foreach(var opt in ViewBag.CoursesDL as List<SelectListItem>)
+                {
+                                <option value=@opt.Value>@opt.Text</option>
+                }
+
+                        </select>
+                    </div>
+
+                    @*
+                    <div class="form-group">
+                        @Html.Label("Course Id")
+                        <div class="editor-field">
+                            @Html.DropDownList("CoursesDL", ViewBag.CoursesDL as List<SelectListItem>, new { @class = "dropdown" })
+                        </div>
+                    </div>
+                *@
+                        @*
+            <div class="form-group">
+                @Html.Label("Course")
+                <div class="editor-field">
+                    @Html.DropDownListFor(x => x.CourseId, ViewBag.CoursesNames as List<SelectListItem>, new { @class = "dropdown" })
+                </div>
+            </div>
+            <div class="form-gorup">
+                @Html.Label("Course Id")
+                @Html.TextBoxFor(x => x.CourseId)
+            </div>
+
+                        *@
+                    
+
+                    <div>
+                        <input type="submit" value="Register" />
+                    </div>
+
+                    </div>
+                    }
+                </div>
+                
+        <div class="col">
+            <h1>List of active courses:</h1>
+            <div id="no-more-tables">
+                <table class="col-md-12 table-bordered table-striped table-condensed cf">
+                    <thead class="cf">
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>
+                                Acronym
+                            </th>
+                            <th>
+                                Topic Name
+                            </th>
+
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in ViewBag.CoursesList as List<Course>)
+                        {
+                            <tr>
+                                <td data-title="Course Id">
+                                    @item.ID
+                                </td>
+
+                                <td data-title="Acronym">
+                                    @item.Acronym
+                                </td>
+                                <td data-title="Topic">
+                                    @item.Topic
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</div>
+</div>
+    </div>

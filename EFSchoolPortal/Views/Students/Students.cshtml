@@ -1,0 +1,73 @@
+﻿@model List<EFSchoolPortal.Models.Student>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h1 class="text-center">Welcome, Students!</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h3>Here you can register as a student!</h3>
+            <a asp-controller="Students" asp-action="RegisterStudent"><input type="button" class="btn-info" value="Register"></a>
+        </div>
+        <div class="col">
+            <h3>Here you can enroll to courses!</h3>
+            <p>Please visit <a asp-controller="Courses" asp-action="Courses">Courses Info page</a> for more details about our courses.</p>
+            <a asp-controller="Students" asp-action="EnrollStudentView"><input type="button" class="btn-info" value="Enroll"></a>
+        </div>
+    </div>
+</div>
+
+<br />
+
+<h1>List of admitted students</h1>
+
+<br />
+
+<div id="no-more-tables">
+    <table class="col-md-12 table-bordered table-striped table-condensed cf">
+        <thead class="cf">
+            <tr>
+                <th>
+                    StudentID
+                </th>
+                <th>
+                    First Name
+                </th>
+                <th>
+                    Last Name
+                </th>
+                <th>
+                    Email Address
+                </th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td data-title="StudentID">
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td data-title="First Name">
+                    @Html.DisplayFor(modelItem => item.Fname)
+                </td>
+                <td data-title="Last Name">
+                    @Html.DisplayFor(modelItem => item.Lname)
+                </td>
+                <td data-title="Email Address">
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+

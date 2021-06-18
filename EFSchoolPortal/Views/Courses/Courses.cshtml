@@ -1,0 +1,49 @@
+﻿@model List<EFSchoolPortal.Models.Course>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1>Here you can find our portfolio of courses:</h1>
+
+<br />
+
+<div id="no-more-tables">
+    <table class="col-md-12 table-bordered table-striped table-condensed cf">
+        <thead class="cf">
+            <tr>
+                <th>
+                    Acronym
+                </th>
+                <th>
+                    Topic
+                </th>
+                <th>
+                    Teacher Name
+                </th>
+
+            </tr>
+
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td data-title="Course Acronym">
+                        @Html.DisplayFor(modelItem => item.Acronym)
+                    </td>
+                    <td data-title="Topic">
+                        @Html.DisplayFor(modelItem => item.Topic)
+                    </td>
+                    <td data-title="Teacher Name">
+                        @Html.DisplayFor(modelItem => item.Teacher.Lname)
+                    </td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
